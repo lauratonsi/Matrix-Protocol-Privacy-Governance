@@ -1,0 +1,214 @@
+\documentclass{beamer} 
+\usepackage{graphicx}  
+\usepackage{xurl}
+\usepackage{tikz}     % Esta sirve para los backgrounds
+
+\usebackgroundtemplate{
+    \begin{tikzpicture}
+        \node[opacity=0.2]                      {\includegraphics[width=\paperwidth,height=\paperheight]{1.png}};
+    \end{tikzpicture}
+}
+
+\title{\textbf{Progetto Matrix.org}}
+\author{\textit{Susanna Cioni, Alessia Monica Rezzaghi,\\ Gerardo Antonio Corral Ruiz, Laura Tonsi}}
+\date{4 Dicembre 2024}
+
+\begin{document}
+
+% Copertina
+\begin{frame}
+    \titlepage 
+    
+\end{frame}
+
+% GER Prima diapositiva
+\section{Che cos\textquotesingle\`e Matrix? Caratteristiche, vantaggi e funzionalit\`a} 
+\begin{frame}{Che cos\textquotesingle\`e Matrix?} 
+    \begin{itemize}
+        \item \textbf{Matrix} \`e una piattaforma di comunicazione decentralizzata e open-source. Aiuta a comunicare in tempo reale in modo sicuro e affidabile. Matrix \`e stata creata come soluzione decentralizzata per sostituire i sistemi centralizzati. Permette agli utenti di comunicare usando \emph{server} indipendenti chiamati \emph{home\emph{server}}. Con il suo modello federato, Matrix facilita la comunicazione tra piattaforme, assicurando sicurezza e libert\`a dei dati.
+    \end{itemize}
+    \includegraphics[width=0.5\textwidth]{Matrix logo.png} 
+\end{frame}
+
+
+
+% GER seconda diapositiva
+\begin{frame}{Come \`e strutturato?}
+     \begin{block}{Controllo dei dati:}
+    Grazie al \emph{homeserver}, si ha il controllo su come e dove vengono archiviati i dati evitando ci\`o che \`e succeso con il caso di Cambridge Analytica.
+    \end{block}
+    \begin{block}{Trasparenza open-source:}
+    Dato che \`e open-source, il software Matrix pu\`o essere verificato da chiunque.
+    \end{block}
+    \begin{block}{Libert\`a di espressione:}
+    Non essendoci un sistema centralizzato, non c\`e un gestore o un curatore dei contenuti che si diffondono nella rete.
+    \end{block}
+\end{frame}
+
+% GER terza diapositiva
+\begin{frame}{Perch\'e scegliere Matrix?}
+    \begin{block}{Resilienza:}
+     La rete non si basa su un singolo punto di errore, quindi se un server smette di funzionare, la comunicazione pu\`o continuare attraverso altri server. (come si ha visto con il caso di \emph{Facebook})
+    \end{block}
+    \begin{block}{Autonomia:}
+    Gli utenti e le organizzazioni possono ospitare i propri server (\emph{homeserver}), mantenendo il controllo sulla propria infrastruttura e sui propri dati. Cos\`i si previene la censura come dicevamo prima.
+    \end{block}
+    \begin{block}{Crittografia end-to-end (E2EE):}
+    Matrix implementa in modo nativo l\textquotesingle E2EE utilizzando i protocolli Olm e Megolm, garantendo che solo i partecipanti autorizzati possano accedere ai messaggi.
+    \end{block}
+\end{frame}
+
+% GER 4ta diapositiva
+\begin{frame}{Parentesi per noi (i non informatici)}
+    \begin{block}{Cos\textquotesingle \`e E2EE?}
+    Solo la persona che invia il messaggio e il destinatario possono leggerne i contenuti, ci\`o perch\'e vengono crittografati sul dispositivo del mittente e decrittografati solo sul dispositivo del destinatario cos\`i.
+    \end{block}
+    \begin{enumerate}
+        \item \textbf{Generazione di chiavi:} ogni utente dispone di una coppia di chiavi crittografiche: una pubblica e una privata. La pubblica viene condivisa con gli altri utenti, mentre la privata \`e segreta.
+        \item \textbf{Crittografia dei messaggi:} quando si invia un messaggio, questo arriva al destinatario grazie alla sua chiave pubblica e viene crittografato.
+        \item \textbf{Trasmissione sicura:} il messaggio crittografato viaggia attraverso la rete. Anche se viene intercettato, non pu\`o essere letto senza la chiave privata del destinatario.
+        \item \textbf{Decodifica del messaggio:} alla ricezione del messaggio, il destinatario utilizza la propria chiave privata per decifrarlo e leggerne il contenuto.
+    \end{enumerate}
+\end{frame}
+
+% GER 5 diapositiva
+\section{Clients}
+\begin{frame}{Cosa sono i \emph{Clients}?}
+    \begin{block}{Definizione:}
+    I \emph{clients} di Matrix sono \emph{apps} che permettono agli utenti di usare Matrix. Sono l\textquotesingle interfaccia che serve per inviare e ricevere messaggi, partecipare alle stanze e gestire le comunicazioni in Matrix.
+    \end{block}
+
+    \textbf{Esempi popolari:}
+    \begin{itemize}
+        \item \textbf{Element:} il client pi\`u conosciuto e utilizzato. Questo e il secondo, ricordano a Discord come interfaccia.
+        \item \textbf{FluffyChat:} un client incentrato sulla semplicit\`a e sulla facilit\`a d\textquotesingle uso.
+        \item \textbf{SchildiChat:} basato su Element ma con un\textquotesingle interfaccia pi\`u tradizionale simile a WhatsApp o Telegram.
+    \end{itemize}
+
+    Esternalit\`a di rete.
+\end{frame}
+
+%Susanna 
+\begin{frame}{\textbf{Conservazione dei dati}: dove?}
+Tre possibilit\`{a}:
+\begin{itemize}
+    \item \textbf{Server Centralizzati} - la via più facile, ma \`{e} anche la pi\`{u} sicura?
+    \item \textbf{Server Diffusi} (Caso Telegram)
+    \item \textbf{Server Federati} (Caso Matrix)
+\end{itemize}
+\end{frame} 
+
+% GER sesta diapositiva
+\section{Matrix - Come \`e strutturato?}
+\begin{frame}{Come \`e strutturato?}
+    \begin{block}{Decentramento:}
+    Non esiste una singola entit\`a che controlla l\textquotesingle intero sistema. Il controllo e i dati sono invece distribuiti su pi\`u nodi indipendenti.
+    \end{block}
+    \begin{block}{Federazione:}
+        Un tipo specifico di decentralizzazione in cui diverse entit\`a indipendenti (server) comunicano tra loro per formare una rete unificata. Ogni server (o \emph{homeserver} in Matrix) opera da solo ma pu\`o interagire con gli altri server della federazione.
+    \end{block}
+    \includegraphics[width=\textwidth]{Decentralized.png}
+\end{frame}
+
+% GER 7ma diapositiva
+\begin{frame}{Esempi di problemi}
+    \begin{columns} 
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item 5 ottobre 2021: Singolo punto di errore.
+            \item 17 marzo 2019: Problemi di \emph{privacy} e sorveglianza.
+            \item 27 agosto 2021: Censura e controllo centralizzato.
+        \end{itemize}
+        \column{0.5\textwidth}
+        \includegraphics[width=\textwidth]{News block 1.png} 
+    \end{columns}
+\end{frame}
+
+%ALESSIA 1 
+\begin{frame}{\textbf{I bridge e il loro funzionamento}}
+\begin{itemize}
+    \item Che cosa sono i \textbf{bridge}?
+    \item \textbf{mautrix-whatsapp} e \textbf{whatsapp-bridge}
+    \item Quali sono i vantaggi?
+    \end{itemize}
+\end{frame}
+
+%LAURA 1 
+\begin{frame}{\textbf{Tutela della Privacy}}
+\begin{itemize}
+    \item Vivendo nell’era digitale, la \textbf{protezione dei dati personali} e della \textbf{privacy online} dovrebbe divenire una delle nostre massime priorit\'{a}. Spesso infatti, la \textit{carenza di competenze informatiche adeguate}, pu\'{o} esporci esporci al rischio di incappare in siti truffa, piattaforme web con standard di sicurezza inadeguati o semplicemente di acconsentire alla raccolta di dati personali che una determinata applicazione non avrebbe necessariamente bisogno di acquisire. 
+    \item L’analisi di diverse piattaforme come Whatsapp, Telegram e Discord ha evidenziato che, pur utilizzando protocolli volti alla tutela della riservatezza dei propri utenti e impegnandosi per mantenere standard adeguati, \textbf{la quantit\'{a} di dati per la semplice creazione di un profilo personale resta sempre elevata}. 
+    \end{itemize}
+\end{frame}
+
+%LAURA 2 
+\begin{frame}
+    \textbf{Caso studio}: multa salata per Discord
+    \textbf{Indagine CNIL} \\ [Commission nationale de l\textquotesingle informatique et des libert\'es] \\
+    \vspace{0.2cm}
+    \begin{itemize}
+        \item Esaminati sito e app di Discord (ispezione documentale, 2020)
+        \item Rilevate molteplici \textbf{violazioni del GDPR}
+    \end{itemize}
+    
+    \textbf{Violazione art. 5 GDPR: Conservazione dati} \\
+    \vspace{0.2cm}
+    \begin{itemize}
+        \item Conservazione oltre il tempo necessario (\textgreater 5 anni)
+        \item Assenza di limiti e procedura di eliminazione
+        \item Violazione dell\textquotesingle \textbf{obbligo di trasparenza} (artt. 13 e 14)
+    \end{itemize}  
+    \textbf{Violazione art. 25 GDPR: Privacy by Default} \\
+    \vspace{0.2cm}
+    \begin{itemize}
+        \item App attiva anche a finestra chiusa, senza avviso chiaro
+        \item Risolto con popup per avvisare l\textquotesingle utente e personalizzare le opzioni di chiusura
+    \end{itemize}
+\end{frame}
+
+%LAURA 3 
+\begin{frame}
+    \textbf{Violazione art. 35 GDPR: Valutazione d\textquotesingle Impatto (DPIA)} \\
+    \vspace{0.2cm}
+    \begin{itemize}
+        \item Mancata \textbf{DPIA} (valutazione d'impatto della protezione dei dati) per trattamenti dati su larga scala e minori
+        \item Discord implementa DPIA su richiesta CNIL
+    \end{itemize}
+
+    \textbf{Riflessione} \\
+    \vspace{0.2cm}
+    \begin{itemize}
+        \item Questa sanzione offre anche l'opportunit\'{a} di riflettere sulle \textbf{differenze nella protezione dei dati tra gli Stati Uniti e l'Unione Europea} e di come spesso, negli USA, i dati personali dei cittadini europei vengano trattati con sufficienza. 
+    \end{itemize}
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{lupa.png}
+    \end{center}
+\end{frame}
+
+
+
+
+% BIBLIO 
+\begin{frame} {Bibliografia e Sitografia}
+\begin{itemize}
+    \item Carbone, M. R. (2022, November 18). \emph{Discord, violate le principali disposizioni GDPR: dalla CNIL super multa da 800mila euro.} Cyber Security 360 \url{https://www.cybersecurity360.it/news/discord-violate-le-principali-disposizioni-gdpr-dalla-cnil-super-multa-da-800mila-euro/}
+    \item \url{https://ems-docs.element.io/books/element-cloud-documentation/page/whatsapp-bridge}
+    \item \url{https://matrix.org/ecosystem/bridges/}
+    \item \url{https://docs.mau.fi/bridges/go/setup.html?bridge=whatsapp}
+    \item \url{https://docs.mau.fi/bridges/go/whatsapp/index.html}
+    \item \url{https://faq.whatsapp.com/673193694148537/?helpref=uf_share}
+    \item \url{https://faq.whatsapp.com/820124435853543/}
+\end{itemize}
+\end{frame}
+\begin{frame} {Bibliografia e Sitografia}
+\begin{itemize}
+\item \url{https://telegram.org/faq}
+    \item \url{https://docs.mau.fi/bridges/go/setup.html?bridge=whatsapp}
+    \item \url{https://discord.com/company}
+    \item \url{https://www.geeksforgeeks.org/comparison-centralized-decentralized-and-distributed-systems/}
+    \item \url{https://www.theguardian.com/technology/2021/oct/05/facebook-outage-what-went-wrong-and-why-did-it-take-so-long-to-fix}
+    \item \url{https://www.wired.com/story/cambridge-analytica-facebook-privacy-awakening/}
+    \item \url{https://time.com/7015026/meta-facebook-zuckerberg-covid-biden-pressure-censorship/}
+\end{itemize}
+\end{frame}
+\end{document}
