@@ -1,0 +1,190 @@
+\documentclass{article} 
+\usepackage{geometry}   % Ci aiuta a sistemare la tabellina dopo.
+\geometry{a4paper, margin=1in} 
+\usepackage{hyperref}
+\usepackage[bottom]{footmisc} % Per le note en el pie de página
+\usepackage{xurl} % Cosi si dividono i urls
+
+\begin{document}
+
+\title{\textbf{Progetto Matrix}}
+\author{\emph{Susanna Cioni, Alessia Monica Rezzaghi, Gerardo Antonio Corral Ruiz, Laura Tonsi}}
+\date{04 Dicembre 2024}
+\maketitle
+
+\section{Che cos\textquotesingle \`{e} Matrix? Caratteristiche, vantaggi e funzionalit\`{a}}
+
+\textbf{Matrix} \`{e} una piattaforma di comunicazione decentralizzata e open-source. Aiuta a comunicare in tempo reale in modo sicuro e affidabile. Matrix \`{e} stata creata come soluzione decentralizzata per sostituire i sistemi centralizzati. Permette agli utenti di comunicare usando \emph{server} indipendenti chiamati \emph{home\emph{server}}. Con il suo modello federato, Matrix facilita la comunicazione tra piattaforme, assicurando sicurezza e libert\`{a} dei dati.
+
+\subsection{I vantaggi di questo sistema:}
+
+\begin{itemize}
+    \item\textbf{Resilienza:} La rete non si basa su un singolo punto di errore, quindi se un server smette di funzionare, la comunicazione pu\`{o} continuare attraverso altri server. (come si ha visto con il caso di \emph{Facebook})
+    \item\textbf{Autonomia:} Gli utenti e le organizzazioni possono ospitare i propri server (\emph{homeserver}), mantenendo il controllo sulla propria infrastruttura e sui propri dati. Cos\`{i} si previene la censura come dicevamo prima.
+    \item\textbf{Controllo dei dati:} Grazie al \emph{homeserver}, si ha il controllo su come e dove vengono archiviati i dati evitando ci\`{o} che \`{e} succeso con il caso di Cambridge Analytica.
+    \item\textbf{Trasparenza open-source:} Dato che \`{e} open-source, il software Matrix pu\`{o} essere verificato da chiunque.
+    \item\textbf{Libert\`{a} di espressione:} Non essendoci un sistema centralizzato, non c\`{e} un gestore o un curatore dei contenuti che si diffondono nella rete.
+    \item\textbf{Crittografia end-to-end (E2EE):} Matrix implementa in modo nativo l\textquotesingle E2EE utilizzando i protocolli Olm e Megolm, garantendo che solo i partecipanti autorizzati possano accedere ai messaggi.
+\end{itemize}
+
+\subsubsection{Parentesi per noi (i non informatici)}
+\textbf{Cos\textquotesingle \`{e} E2EE?}
+
+Solo la persona che invia il messaggio e il destinatario possono leggerne i contenuti, ci\`{o} perch\'{e} vengono crittografati sul dispositivo del mittente e decrittografati solo sul dispositivo del destinatario cos\`{i}.
+\begin{enumerate}
+    \item \textbf{Generazione di chiavi:} ogni utente dispone di una coppia di chiavi crittografiche: una pubblica e una privata. La pubblica viene condivisa con gli altri utenti, mentre la privata \`{e} segreta.
+    \item \textbf{Crittografia dei messaggi:} quando si invia un messaggio, questo arriva al destinatario grazie alla sua chiave pubblica e viene crittografato.
+    \item \textbf{Trasmissione sicura:} il messaggio crittografato viaggia attraverso la rete. Anche se viene intercettato, non pu\`{o} essere letto senza la chiave privata del destinatario.
+    \item \textbf{Decodifica del messaggio:} alla ricezione del messaggio, il destinatario utilizza la propria chiave privata per decifrarlo e leggerne il contenuto.
+\end{enumerate}
+
+\subsection{I \emph{clients}}
+
+I \emph{clients} di Matrix sono \emph{apps} che permettono agli utenti di usare Matrix. Sono l\textquotesingle interfaccia che serve per inviare e ricevere messaggi, partecipare alle stanze e gestire le comunicazioni in Matrix.
+\newline \newline
+\textbf{Esempi popolari:}
+
+\begin{itemize}
+    \item \textbf{Element:} il client pi\`{u} conosciuto e utilizzato. Questo e il secondo, ricordano a Discord come interfaccia.
+    \item \textbf{FluffyChat:} un client incentrato sulla semplicit\`{a} e sulla facilit\`{a} d\textquotesingle uso.
+    \item \textbf{SchildiChat:} basato su Element ma con un\textquotesingle interfaccia pi\`{u} tradizionale simile a WhatsApp o Telegram.
+\end{itemize}
+
+L\textquotesingle adozione dei client consente a Matrix di sfruttare completamente il potenziale delle esternalit\`{a} di rete come abbiamo visto a lezione.
+    
+
+\section{Conservazione dei dati: dove?}
+
+Relativamente al salvataggio e alla conservazione dei dati degli utenti e delle relative chat, ci sono alcune possibilit\`{a}.
+La prima (pi\`{u} comune) \`{e} quella di conservare i dati in \emph{server} di propriet\`{a} della piattaforma. In questo modo tutte le comunicazioni e i dati passano attraverso un unico canale e sono controllati e gestiti da un\textquotesingle unica azienda. In questo modo \`{e} pi\`{u} facile gestire i dati, ma questi sono anche pi\`{u} vulnerabili per vari motivi:
+\begin{itemize}
+    \item Se il \emph{server} centrale ha un guasto, questo pu\`{o} portare offline l\textquotesingle intero sistema
+    \item In caso di attacchi informatici, i dati sono conservati nello stesso \emph{server} dunque \`{e} possibile accedere alla totalit\`{a} di questi.
+    \item L\textquotesingle azienda che conserva i dati potrebbe accedervi o venderli a terzi
+    \item L\textquotesingle azienda \`{e} soggetta alla normativa del Paese in cui \`{e}, perci\`{o} questo potrebbe obbligarla a fornire informazioni riguardo agli utenti
+\end{itemize}
+
+Per questo motivo, alcune piattaforme hanno deciso di dotarsi di \emph{server} diffusi. E\textquotesingle il caso di Telegram che ha scelto di conservare i dati (criptati) in data center sparsi per il globo. In questo modo non sono soggetti alla giurisdizione di un\textquotesingle unica nazione. Inoltre, le chiavi necessarie a decifrare i dati sono conservate in luoghi diversi da quelli dove sono conservati i dati che leggerebbero. In questo modo nessun governo pu\`{o} forzare l\textquotesingle accesso ai dati degli utenti, l\textquotesingle unico modo \`{e} attivare una procedura che richiede prima di tutto una forte motivazione legale (crimini gravi) e l\textquotesingle approvazione all\textquotesingle accesso da parte dei vari stati coinvolti.
+
+Esiste una terza via, che \`{e} quella scelta da Matrix.
+Oltre a ospitare i dati sui propri \emph{server}, Matrix ha scelto di dare la possibilit\`{a} agli utenti di conservare i propri dati personali e quelli relativi alle chat nei loro \emph{server} personali (\emph{home\emph{server}}). 
+Questo porta alla creazione di un modello federato, in cui i \emph{server} indipendenti comunicano tra loro per formare una rete unificata.
+Gli \emph{home\emph{server}} possono interagire senza problemi, permettendo agli utenti di partecipare alle stesse conversazioni anche se ospitati su \emph{server} diversi.
+
+Grazie a questa soluzione l\textquotesingle utente \`{e} padrone dei propri dati e pu\`{o} controllare chi vi accede oppure pu\`{o} decidere di eliminarli in qualsiasi momento. Questo pu\`{o} essere un punto di vulnerabilit\`{a} perch\'{e} la sicurezza informatica di tale \emph{server} \`{e} responsabilit\`{a} dell\textquotesingle utente che lo possiede, ma in caso di hackeraggio viene colpito solamente quel \emph{server} con i dati di quello specifico utente, senza che chi effettua l\textquotesingle attacco possa avere accesso ai dati di altri utenti.
+Inoltre, con questo metodo il singolo utente ha pieno controllo dei propri dati e nel caso in cui terze parti quali le autorit\`{a} volessero accedere a quei dati, l\textquotesingle utente pu\`{o} cancellarli in autonomia senza dover fare richiesta alla piattaforma.
+
+\subsection{Matrix - Come \`{e} strutturato?}
+
+\textbf{Decentramento:}
+ Che sia un sistema decentrato vuol dire che non esiste una singola entit\`{a} che controlla l\textquotesingle intero sistema. Il controllo e i dati sono invece distribuiti su pi\`{u} nodi indipendenti.
+\newline \newline
+\textbf{Esempi di problemi:}   
+\begin{itemize}
+    \item \textbf{Punto Unico di Errore}: [5 ottobre 2021] Cadono i \emph{server} di \emph{Facebook} e nessuno pu\`{o} utilizzarlo, questo non potrebbe succedere con Matrix.\footnote{Ci\`{o} \`{e} chiaramente evidenziato nella notizia allegata su \emph{The Guardian}: \texttt{https://www.theguardian.com/technology/202
+    1/oct/05/facebook-outage-what-went-wrong-and-why-did-it-take-so-long-to-fix}}, che ha avuto un impatto su milioni di utenti in tutto il mondo.
+    \item \textbf{Privacy e Sorveglianza}: [17 marzo 2019]  Nel caso di Cambridge Analytica\footnote{Qui invece utilizziamo come esempio per la nostra presentazione il caso mostrato da Lapowsky Issie nel suo articolo su Cambridge Analytica: \texttt{https://www.wired.com/story/cambridge-analytica-facebook-privacy-awakening/}}, i dati personali di milioni di utenti \emph{Facebook} sono stati raccolti senza il loro consenso esplicito e utilizzati per manipolare elezioni politiche e creare campagne pubblicitarie mirate.
+\end{itemize}
+\textbf{Federazione:}
+Questo \`{e} un tipo specifico di decentralizzazione in cui diverse entit\`{a} indipendenti (\emph{server}) comunicano tra loro per formare una rete unificata. Ogni server (o \emph{homeserver} in Matrix) opera da solo ma pu\`{o} interagire con gli altri server della federazione.
+\newline \newline
+\textbf{Esempio di problema:}   
+\begin{itemize}
+    \item \textbf{Censura e controllo centralizzato}: [27 agosto 2021] I fornitori centralizzati possono esercitare un potere significativo sul contenuto, come nel caso di una notizia in cui Mark Zuckerberg ha confessato che i funzionari dell\textquotesingle amministrazione Biden hanno esercitato pressioni su \emph{Facebook} per censurare contenuti relativi al COVID-19 durante la pandemia.\footnote{La notizia sta disponibile su: \texttt{https://time.com/7015026/meta-facebook-zuckerberg-cov
+id-biden-pressure-censorship/}} Invece in Matrix non ci sono:
+\begin{itemize}
+    \item \textbf{N\\textquotesingle e interferenza esterna}
+    \item \textbf{N\\textquotesingle e limitazione della libert\`{a} di espressione}
+\end{itemize}
+\end{itemize}
+
+\section{I \emph{bridge} e il loro funzionamento}
+I \emph{bridge} in Matrix sono una soluzione che consente agli utenti la comunicazione tra i \emph{server} Matrix ed altre piattaforme (ad esempio con WhatsApp, Telegram, Discord, Slack ecc\ldots), come se facessero parte dello stesso ecosistema. Diventa quindi un intermediario che traduce e inoltra i messaggi, gestendo la comunicazione tra i due sistemi che altrimenti non sarebbe possibile. \\ \newline
+Nello specifico questo avviene attraverso delle implementazioni che servono per integrare le due piattaforme. Nel caso di WhatsApp questo avviene con \textbf{matrix-whatsapp} (uno dei \emph{bridge} pi\{u} popolari) che per\{o} richiede una conoscenza avanzata del codice oppure attraverso \textbf{whatsapp-\emph{bridge}}.\\
+I requisiti per farlo funzionare sono:
+\begin{enumerate}
+    \item un \emph{home\emph{server}} Matrix che supporta i servizi applicativi (es: Synapse)
+    \item un \emph{server} PostgreSQL, v10 o maggiore
+    \item un \emph{client} WhatsApp che funzioni sul dispositivo
+    \item ffmpeg (per inviare gifs)
+\end{enumerate}
+L\textquotesingle installazione del \emph{bridge} pu\`{o} avvenire manualmente o scaricando dei modelli precompilati eseguibili da mau.dev CI o GitHub.\\ \newline
+Inoltre abbiamo bisogno, per creare questo ponte, di un API non ufficiale, nel caso di WhatsApp utilizziamo \emph{WhatsApp Web}. Questo per\{o} potrebbe portare al ban dell\textquotesingle account essendo che potrebbe violare i termini e condizioni della piattaforma. L\textquotesingle API cambia frequentemente quindi c\textquotesingle \{e} bisogno di un costante aggiornamento del \emph{bridge}.\\ \newline
+I vantaggi quindi sono:
+\begin{enumerate}
+    \item \textbf{Interoperabilit\{a}}: dove gli utenti possono interagire con moltissime piattaforme senza dover mai cambiare  applicazione. Questo punto evidenzia come ci sia una \emph{esternalit\{a} di rete}.
+    \item \textbf{Controllo decentralizzato}: perch\'{e} anche se si interagisce con sistemi esterni, gli utenti mantegono il controllo sui loro dati.
+\end{enumerate}
+
+
+\begin{enumerate}
+    \item l\textquotesingle \textbf{interoperabilit\`{a}}: dove gli utenti possono interagire con moltissime piattaforme senza dover mai cambiare  applicazione. Questo punto evidenzia come ci sia una \emph{esternalit\`{a} di rete}.
+    \item il \textbf{controllo decentralizzato}: perch\'{e} anche se si interagisce con sistemi esterni, gli utenti mantegono il controllo sui loro dati.
+\end{enumerate}
+
+\section{Tutela della privacy: il caso di Discord}
+Vivendo nell’era digitale, la protezione dei dati personali e della privacy online dovrebbe divenire una delle nostre massime priorit\`{a}. Spesso infatti, la carenza di competenze informatiche adeguate, pu\`{o} esporci esporci al rischio di incappare in siti truffa, piattaforme web con standard di sicurezza inadeguati o semplicemente di acconsentire alla raccolta di dati personali che una determinata applicazione non avrebbe necessariamente bisogno di acquisire. \\
+L’analisi di diverse piattaforme come Whatsapp, Telegram e Discord ha evidenziato che, pur utilizzando protocolli volti alla tutela della riservatezza dei propri utenti e impegnandosi per mantenere standard adeguati, la quantit\`{a} di dati per la semplice creazione di un profilo personale resta sempre elevata. \\ 
+
+Un caso particolarmente significativo in questo contesto riguarda la piattaforma Discord, la quale \`{e} stata sanzionata da parte della \textbf{CNIL} (Commission Nationale de l’Informatique et des Libert\`{e}s) con una multa di 800 mila euro per la violazione delle principali disposizioni GDPR. La societ\`{a} statunitense titolare della piattaforma di gaming, infatti, \`{e} stata oggetto di indagine nel 2020 a seguito della quale sono emerse diverse criticit\`{a}. Il CNIL ha accertato \emph{cinque violazioni} a carico di Discord:
+\begin{enumerate}
+    \item La societ\`{a} non aveva previsto un piano chiaro per la \textbf{conservazione dei dati personali} e il periodo di conservazione non veniva nemmeno riportato nei registri. Si stima quindi che i dati non siano mai stati eliminati dal lancio della piattaforma stessa il che \`{e} una violazione dell\textquotesingle \emph{articolo 5}, secondo cui \emph{"i dati dovrebbero essere conservati solo per il periodo di tempo necessario per il conseguimento delle finalit\`{a} per i quali sono trattati".} 
+    \item Come risultato della violazione dell\textquotesingle \emph{articolo 5}, si \`{e} verificata quindi anche una violazione dell\textquotesingle \textbf{obbligo di trasparenza}, poich\`{e} la violazione precedente avrebbe impedito agli utenti di prendere decisioni in modo informato.
+    \item Uno dei principali problemi rilevati dalla CNIL \`{e} stata la violazione del \textbf{principio di privacy by default}; l\textquotesingle applicazione era configurata infatti per rimanere attiva anche dopo la chiusura della finestra principale, compromettendo quindi la privacy degli utenti.
+    \item La piattaforma consentiva inoltre l\textquotesingle uso di \textbf{password} troppo brevi, poco complesse e soprattutto prive di misure di sicurezza aggiuntive: questo poneva in essere un rischio per la protezione dei singoli utenti \emph{(art. 32 GDPR)}. 
+    \item La societ\`{a} non aveva ritenuto necessario condurre una \textbf{valutazione d\textquotesingle impatto della protezione dei dati (DPIA)}, indispensabile nel caso in cui vengano trattati grandi quantit\`{a} di dati e soprattutto quando, come in questo caso, i dati appartengano ad una categoria di persone vulnerabili (persone di et\`{a} inferiore ai 15 anni). 
+\end{enumerate}
+
+Questa sanzione offre anche l\textquotesingle opportunit\`{a} di riflettere sulle differenze nella protezione dei dati tra gli Stati Uniti e l\textquotesingle Unione Europea e di come spesso, negli USA, i dati personali dei cittadini europei vengano trattati con sufficienza. 
+
+\section{Conclusioni}
+Matrix \`{e} effettivamente \emph{p\`{u} sicuro} rispetto alle altre piattaforme?
+
+Da quello che abbiamo analizzato Matrix si pu\`{o} ritenere pi\`{u} sicuro grazie ai suoi server decentralizzati (punto di forza), alla crittografia end-to-end (E2EE), alle opzioni di registrazione e alla modalit\`{a} di conservazione dei dati dove gli utenti sono liberi di gestire i propri dati e nel caso eliminarli, non c\textquotesingle\`{e}, come nel caso di \emph{Meta}, qualcuno che possiede tutti i nostri dati, noi siamo i proprietari e possiamo gestirli come vogliamo.
+
+Questa sicurezza per\textquotesingle\`{o} si perde nel momento in cui vengono attuati i bridge con le altre piattaforme.
+
+\newpage
+
+
+\center
+\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+\hline
+\textbf{ } & \textbf{Matrix} & \textbf{Discord} & \textbf{Telegram} & \textbf{WhatsApp} 
+\\ \hline 
+Numero di profili registrati & 115 milioni (2023) & 300 milioni (2024) & 950 milioni (2024) & 2 miliardi (2024)
+\\ \hline 
+Dati Personali richiesti & Username, password e indirizzo email & Nome utente, password, indirizzo email e/o numero di telefono, data di nascita. Per gli acquisti effettuati sulla piattaforma, vengono raccolti i dati necessari per elaborare le transazioni, gestiti attraverso fornitori come Stripe e PayPal. & Numero di telefono, nome utente & Numero di telefono, nome utente, contatti. Messaggi, foto, video, file. Informazioni del dispositivo e connessione. Utilizzo e interazioni. Posizione e dati di pagamento (opzionale)
+\\ \hline 
+Crittografia & Crittografia end-to-end (E2EE) & Crittografia end-to-end (E2EE) per le chiamate audio e video & \emph{client}-\emph{server} oppure E2E & Crittografia end-to-end (E2EE)
+\\ \hline 
+Archiviazione dati & Federazione di \emph{server} (di Matrix e degli utenti) & Database Discord & \emph{server} Telegram Diffuso & \emph{server} di propriet\`{a} o gestiti da Meta (\emph{Facebook})
+\\ \hline 
+Eliminazione dati & Se si desidera eliminare i contenuti e i propri dati \`{e} necessario richiedere la cancellazione dell\textquotesingle account, che pu\`{o} richiedere fino a 30 giorni, ma le persone con le quali hai scambiato informazioni rimangono in possesso di queste. Inoltre, rimane in memoria a quali stanze hai partecipato, anche dopo che ti sei cancellato. & I dati dell\textquotesingle utente vengono eliminati in modo permanente. I contenuti condivisi con altri utenti restano visibili, ma non sono pi\`{u} associati al tuo account. Vengono inoltre conservate informazioni aggregate e anonime, che non consentono l\textquotesingle identificazione personale e non sono pi\`{u} collegate all\textquotesingle utente. & Possibilit\`{a} di eliminare tutto ci\`{o} che \`{e} stato scambiato senza che rimanga traccia & Ci sono varie modalit\`{a} di eliminazione dei dati e cambiano a seconda del tipo di dato e dall\textquotesingle impostazione dell\textquotesingle utente. Eliminazione dei messaggi nelle chat, eliminazione delle chat, dati nei backup, eliminazione automatica, richiesta di eliminazione account, dati residui sul \emph{server}. \\ \hline
+\end{tabular}
+\newline \newline \newline
+\emph{Tabella comparativa delle caratteristiche delle diverse piattaforme esaminate.}
+
+
+\newpage
+
+\section{Bibliografia e Sitografia}
+
+\begin{itemize}
+    \item Carbone, M. R. (2022, November 18). \emph{Discord, violate le principali disposizioni GDPR: dalla CNIL super multa da 800mila euro.} Cyber Security 360
+    \item \url{https://ems-docs.element.io/books/element-cloud-documentation/page/whatsapp-bridge}
+    \item \url{https://matrix.org/ecosystem/bridges/}
+    \item \url{https://docs.mau.fi/bridges/go/setup.html?bridge=whatsapp}
+    \item \url{https://docs.mau.fi/bridges/go/whatsapp/index.html}
+    \item \url{https://faq.whatsapp.com/673193694148537/?helpref=uf_share}
+    \item \url{https://faq.whatsapp.com/820124435853543/}
+    \item \url{https://telegram.org/faq}
+    \item \url{https://docs.mau.fi/bridges/go/setup.html?bridge=whatsapp}
+    \item \url{https://discord.com/company}
+    \item \url{https://www.geeksforgeeks.org/comparison-centralized-decentralized-and-distributed-systems/}
+    \item \url{https://www.theguardian.com/technology/2021/oct/05/facebook-outage-what-went-wrong-and-why-did-it-take-so-long-to-fix}
+    \item \url{https://www.wired.com/story/cambridge-analytica-facebook-privacy-awakening/}
+    \item \url{https://time.com/7015026/meta-facebook-zuckerberg-covid-biden-pressure-censorship/}
+\end{itemize}
+
+\end{document}
